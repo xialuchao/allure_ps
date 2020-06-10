@@ -1,0 +1,21 @@
+setup_account:
+    username: 1000222
+    password: admin123
+
+multi_account:
+  - all: 2
+  - number: 1
+    username: 1000111
+    password: admin123
+
+  - number: 2
+    username: 1000222
+    password: admin123
+
+  - number: 3
+    username: 1000333
+    password: admin123
+
+  - number: 4
+    username: 1000666
+    password: admin123
