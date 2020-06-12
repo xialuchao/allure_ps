@@ -5,7 +5,6 @@ from pack.pack_log import logger
 from time import sleep
 from selenium import webdriver
 from page.login_page import loginPage
-
 from data.configyaml import getdata, getThirddata
 from config import config
 
@@ -80,19 +79,20 @@ def multi_browser(cmdopt):
         browser = webdriver.Remote(
             command_executor='http://localhost:5555/wd/hub',
             desired_capabilities=DesiredCapabilities.CHROME)
-    elif cmdopt == "192.168.6.218:6666":
+        temp = 1
+    elif cmdopt == "192.168.6.89:6666":
         browser = webdriver.Remote(
-            command_executor='http://192.168.6.174:6666/wd/hub',
+            command_executor='http://192.168.6.89:6666/wd/hub',
             desired_capabilities=DesiredCapabilities.CHROME)
+        temp = 2
     else:
         raise Exception
     browser.implicitly_wait(10)
+    browser.maximize_window()
     browser.get("http://ft1.home.zhaoonline.com/login.shtml?back=")
-    for i in range(len(getThirddata("multi_account", 0, "all"))):
-        print(i)
-        browser.find_element_by_id("loginId").send_keys(getThirddata("setup_account", i+1, "username"))
-        browser.find_element_by_id("password").send_keys(getThirddata("setup_account", i+1, "password"))
-        browser.find_element_by_id("loginBtn").click()
+    browser.find_element_by_id("loginId").send_keys(getThirddata("multi_account", temp, "username"))
+    browser.find_element_by_id("password").send_keys(getThirddata("multi_account", temp, "password"))
+    browser.find_element_by_id("loginBtn").click()
     yield browser
     browser.quit()
     sleep(2)

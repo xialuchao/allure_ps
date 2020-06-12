@@ -4,7 +4,7 @@ from multiprocessing import Pool
 
 driver_infos = [
     ["localhost:5555", "test_case/test_bid.py"],
-    # ["192.168.6.218:6666", "test_case/test_login.py"]
+    # ["192.168.6.89:6666", "test_case/test_bid.py"]
 ]
 def run_parallel(driver_info):
     pytest.main([driver_info[1],

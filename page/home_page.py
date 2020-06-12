@@ -2,8 +2,8 @@ from selenium.webdriver.common.by import By
 
 import sys,os
 sys.path.append(".")
-print("x"*30)
-print(os.getcwd())
+# print("x"*30)
+# print(os.getcwd())
 from api.base_api import basePage
 
 
